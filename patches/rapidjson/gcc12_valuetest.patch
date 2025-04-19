@@ -1,0 +1,34 @@
+From 1f59c69cd18cd508395fe0bb5c2f8ee909e3c48d Mon Sep 17 00:00:00 2001
+From: Tom Briden <tom@decompile.me.uk>
+Date: Sun, 15 May 2022 10:15:26 +0100
+Subject: [PATCH] valuetest: fix potential write of terminating nul past the
+ end of the destination
+
+Fixes 2 compile errors with gcc-12, eg:
+
+tesunittest/valuetest.cpp:1516:30: error: 'sprintf' may write a terminating nul past the end of the destination [-Werror=format-overflow=]
+test/unittest/valuetest.cpp:1516:20: note: 'sprintf' output between 2 and 11 bytes into a destination of size 10
+---
+ test/unittest/valuetest.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/test/unittest/valuetest.cpp
++++ b/test/unittest/valuetest.cpp
+@@ -1512,7 +1512,7 @@
+     {
+         int i = 0;
+         for (auto& m : x.GetObject()) {
+-            char name[10];
++            char name[11];
+             sprintf(name, "%d", i);
+             EXPECT_STREQ(name, m.name.GetString());
+             EXPECT_EQ(i, m.value.GetInt());
+@@ -1523,7 +1523,7 @@
+     {
+         int i = 0;
+         for (const auto& m : const_cast<const Value&>(x).GetObject()) {
+-            char name[10];
++            char name[11];
+             sprintf(name, "%d", i);
+             EXPECT_STREQ(name, m.name.GetString());
+             EXPECT_EQ(i, m.value.GetInt());

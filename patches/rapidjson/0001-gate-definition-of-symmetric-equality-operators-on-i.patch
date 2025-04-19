@@ -1,0 +1,29 @@
+From 64faab2e9235ed51f37ef592010b35fc7f7324ec Mon Sep 17 00:00:00 2001
+From: Kent Ross <k@mad.cash>
+Date: Mon, 14 Mar 2022 12:25:26 -0700
+Subject: [PATCH] gate definition of symmetric equality operators on impl, not
+ lib
+
+These operators call themselves recursively if C++20 semantics are present in the compiler, regardless of standard library support for the operator; therefore the test should be on __cpp_impl_three_way_comparison, not __cpp_lib_[...].
+
+This fixes the Value.EqualtoOperator test when the language standard is set to C++20 and the standard library does not yet define the library support macro.
+---
+ include/rapidjson/document.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/rapidjson/document.h b/include/rapidjson/document.h
+index 0c4c229e..4f1e2467 100644
+--- a/include/rapidjson/document.h
++++ b/include/rapidjson/document.h
+@@ -1092,7 +1092,7 @@ public:
+      */
+     template <typename T> RAPIDJSON_DISABLEIF_RETURN((internal::IsGenericValue<T>), (bool)) operator!=(const T& rhs) const { return !(*this == rhs); }
+ 
+-#ifndef __cpp_lib_three_way_comparison
++#ifndef __cpp_impl_three_way_comparison
+     //! Equal-to operator with arbitrary types (symmetric version)
+     /*! \return (rhs == lhs)
+      */
+-- 
+2.45.2
+

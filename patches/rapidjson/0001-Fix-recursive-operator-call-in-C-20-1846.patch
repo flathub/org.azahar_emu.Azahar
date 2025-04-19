@@ -1,0 +1,32 @@
+From 24ebd51287f7f3f6aca11a3c7cc8eea8110c10ce Mon Sep 17 00:00:00 2001
+From: Laurent Stacul <laurent.stacul@amadeus.com>
+Date: Mon, 22 Feb 2021 16:11:42 +0000
+Subject: [PATCH] Fix recursive operator== call in C++20 (#1846)
+
+---
+ include/rapidjson/document.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/rapidjson/document.h b/include/rapidjson/document.h
+index 028235ec..09101229 100644
+--- a/include/rapidjson/document.h
++++ b/include/rapidjson/document.h
+@@ -1083,6 +1083,7 @@ public:
+      */
+     template <typename T> RAPIDJSON_DISABLEIF_RETURN((internal::IsGenericValue<T>), (bool)) operator!=(const T& rhs) const { return !(*this == rhs); }
+ 
++#ifndef __cpp_lib_three_way_comparison
+     //! Equal-to operator with arbitrary types (symmetric version)
+     /*! \return (rhs == lhs)
+      */
+@@ -1093,6 +1094,7 @@ public:
+      */
+     template <typename T> friend RAPIDJSON_DISABLEIF_RETURN((internal::IsGenericValue<T>), (bool)) operator!=(const T& lhs, const GenericValue& rhs) { return !(rhs == lhs); }
+     //@}
++#endif
+ 
+     //!@name Type
+     //@{
+-- 
+2.45.2
+

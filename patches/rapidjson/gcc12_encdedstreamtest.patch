@@ -1,0 +1,22 @@
+From 2b2c80450031028439ba2a17a09ef5aa10f2159b Mon Sep 17 00:00:00 2001
+From: Tom Briden <tom@decompile.me.uk>
+Date: Sun, 15 May 2022 10:20:21 +0100
+Subject: [PATCH] encdedstreamtest: fix use-after-free compile error with
+ gcc-12
+
+---
+ test/unittest/encodedstreamtest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/test/unittest/encodedstreamtest.cpp
++++ b/test/unittest/encodedstreamtest.cpp
+@@ -113,8 +113,8 @@
+                 EXPECT_EQ(expected, actual);
+             }
+             EXPECT_EQ('\0', s.Peek());
+-            free(data);
+             EXPECT_EQ(size, eis.Tell());
++            free(data);
+         }
+     }
+ 
