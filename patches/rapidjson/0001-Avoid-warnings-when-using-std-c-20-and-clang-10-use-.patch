@@ -1,0 +1,47 @@
+From 2661a17c7eaede8c881e7455f5a66fd593ed8633 Mon Sep 17 00:00:00 2001
+From: "Romain Geissler @ Amadeus" <romain.geissler@amadeus.com>
+Date: Fri, 20 Mar 2020 06:39:48 +0100
+Subject: [PATCH] Avoid warnings when using -std=c++20 and clang 10: use three
+ way comparision for iterators when possible. (#1667)
+
+/data/mwrep/res/osp/RapidJson/20-0-0-0/include/rapidjson/document.h:729:58: error: use of overloaded operator '!=' is ambiguous (with operand types 'rapidjson::GenericValue<rapidjson::UTF8<char>, rapidjson::MemoryPoolAllocator<rapidjson::CrtAllocator> >::MemberIterator' (aka 'rapidjson::GenericMemberIterator<false, rapidjson::UTF8<char>, rapidjson::MemoryPoolAllocator<rapidjson::CrtAllocator> >') and 'rapidjson::GenericValue<rapidjson::UTF8<char>, rapidjson::MemoryPoolAllocator<rapidjson::CrtAllocator> >::MemberIterator')
+                for (MemberIterator m = MemberBegin(); m != MemberEnd(); ++m)
+---
+ include/rapidjson/document.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/include/rapidjson/document.h b/include/rapidjson/document.h
+index 3f66e41d..1a59a14e 100644
+--- a/include/rapidjson/document.h
++++ b/include/rapidjson/document.h
+@@ -24,6 +24,9 @@
+ #include "encodedstream.h"
+ #include <new>      // placement new
+ #include <limits>
++#ifdef __cpp_impl_three_way_comparison
++#include <compare>
++#endif
+ 
+ RAPIDJSON_DIAG_PUSH
+ #ifdef _MSC_VER
+@@ -247,12 +250,17 @@ public:
+ 
+     //! @name relations
+     //@{
++#ifdef __cpp_impl_three_way_comparison
++    template <bool Const_> bool operator==(const GenericMemberIterator<Const_,Encoding,Allocator>& that) const { return ptr_ == that.ptr_; }
++    template <bool Const_> std::strong_ordering operator<=>(const GenericMemberIterator<Const_,Encoding,Allocator>& that) const { return ptr_ <=> that.ptr_; }
++#else
+     bool operator==(ConstIterator that) const { return ptr_ == that.ptr_; }
+     bool operator!=(ConstIterator that) const { return ptr_ != that.ptr_; }
+     bool operator<=(ConstIterator that) const { return ptr_ <= that.ptr_; }
+     bool operator>=(ConstIterator that) const { return ptr_ >= that.ptr_; }
+     bool operator< (ConstIterator that) const { return ptr_ < that.ptr_; }
+     bool operator> (ConstIterator that) const { return ptr_ > that.ptr_; }
++#endif
+     //@}
+ 
+     //! @name dereference
+-- 
+2.45.2
+
