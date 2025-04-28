@@ -122,7 +122,6 @@
             ],
             "post-install": [
                 "install -Dm755 ../azahar-launcher.sh /app/bin/azahar-launcher",
-                "install -Dm644 ../org.azahar_emu.Azahar.metainfo.xml /app/share/appdata/org.azahar_emu.Azahar.metainfo.xml",
                 "desktop-file-edit --set-key StartupWMClass --set-value azahar --set-key Exec --set-value azahar-launcher /app/share/applications/org.azahar_emu.Azahar.desktop"
             ],
             "sources": [
@@ -130,10 +129,6 @@
                     "type": "archive",
                     "url": "https://github.com/azahar-emu/azahar/releases/download/2120.3/azahar-unified-source-20250414-00e3bbb.tar.xz",
                     "sha256": "3e6c35bde6fc78021e6411e42a24aad7a889f5c556947925441bedc3e9aa242d"
-                },
-                {
-                    "type": "file",
-                    "path": "org.azahar_emu.Azahar.metainfo.xml"
                 },
                 {
                     "type": "file",
