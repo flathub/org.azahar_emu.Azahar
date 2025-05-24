@@ -23,7 +23,8 @@
         "--filesystem=host:ro",
         "--filesystem=xdg-run/app/com.discordapp.Discord:ro",
         "--filesystem=xdg-desktop:create",
-        "--filesystem=xdg-data/applications:create"
+        "--filesystem=xdg-data/applications:create",
+        "--filesystem=xdg-run/gamescope-0:ro"
     ],
     "cleanup": [
         "/include",
