@@ -130,7 +130,13 @@
                 {
                     "type": "archive",
                     "url": "https://github.com/azahar-emu/azahar/releases/download/2121.2/azahar-unified-source-2121.2.tar.xz",
-                    "sha256": "d22386172c8c59f3d9fa44d5da577f6b6c5ee0cb393cea3b4dece98c06ca3447"
+                    "sha256": "d22386172c8c59f3d9fa44d5da577f6b6c5ee0cb393cea3b4dece98c06ca3447",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/azahar-emu/azahar/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": ".assets[] | select(.name | test(\"^azahar-unified-source.*.xz$\")).browser_download_url"
+                    }
                 },
                 {
                     "type": "file",
