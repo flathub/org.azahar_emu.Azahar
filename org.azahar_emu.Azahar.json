@@ -1,15 +1,15 @@
 {
     "app-id": "org.azahar_emu.Azahar",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.8",
+    "runtime-version": "6.9",
     "sdk": "org.kde.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.llvm19"
+        "org.freedesktop.Sdk.Extension.llvm20"
     ],
     "command": "azahar-launcher",
     "build-options": {
-        "append-path": "/usr/lib/sdk/llvm19/bin",
-        "prepend-ld-library-path": "/usr/lib/sdk/llvm19/lib",
+        "append-path": "/usr/lib/sdk/llvm20/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm20/lib",
         "cflags": "-Wno-unused-command-line-argument",
         "cxxflags": "-Wno-unused-command-line-argument"
     },
@@ -41,32 +41,6 @@
         "*.la"
     ],
     "modules": [
-        {
-            "name": "glslang",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/KhronosGroup/glslang/archive/refs/tags/15.1.0.zip",
-                    "sha256": "c4cc5083dd198640f3ad9d2014ac9b31433495a57cd3fb2420cd4e8ea8eb4b2b"
-                },
-                {
-                    "type": "archive",
-                    "url": "https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/vulkan-sdk-1.4.304.1.tar.gz",
-                    "sha256": "9fe736980d424c04f1303ae71b94b18bcc6046ae348909c393344a45e1bd7ff8",
-                    "dest": "External/spirv-tools"
-                },
-                {
-                    "type": "archive",
-                    "url": "https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-1.4.304.1.tar.gz",
-                    "sha256": "66e6cec19e7433fc58ace8cdf4040be0d52bb5920e54109967df2dd9598a8d48",
-                    "dest": "External/spirv-tools/external/spirv-headers"
-                }
-            ]
-        },
         {
             "name": "rapidjson",
             "buildsystem": "cmake-ninja",
