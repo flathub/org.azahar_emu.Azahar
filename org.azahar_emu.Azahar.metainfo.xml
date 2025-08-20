@@ -30,6 +30,13 @@
   </screenshots>
   <releases>
 
+    <release version="2123.1" date="2025-08-20">
+      <description>
+        <p>Read the changelog here:</p>
+        <p>https://github.com/azahar-emu/azahar/releases/tag/2123.1</p>
+      </description>
+    </release>
+
     <release version="2123" date="2025-08-15">
       <description>
         <p>Read the changelog here:</p>
