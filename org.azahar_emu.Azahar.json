@@ -1,15 +1,15 @@
 {
     "app-id": "org.azahar_emu.Azahar",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.9",
+    "runtime-version": "6.10",
     "sdk": "org.kde.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.llvm19"
+        "org.freedesktop.Sdk.Extension.llvm21"
     ],
     "command": "azahar-launcher",
     "build-options": {
-        "append-path": "/usr/lib/sdk/llvm19/bin",
-        "prepend-ld-library-path": "/usr/lib/sdk/llvm19/lib",
+        "append-path": "/usr/lib/sdk/llvm21/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm21/lib",
         "cflags": "-Wno-unused-command-line-argument",
         "cxxflags": "-Wno-unused-command-line-argument"
     },
@@ -50,7 +50,8 @@
                 "-DRAPIDJSON_BUILD_DOC=OFF",
                 "-DRAPIDJSON_BUILD_EXAMPLES=OFF",
                 "-DRAPIDJSON_BUILD_TESTS=OFF",
-                "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON"
+                "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
             ],
             "sources": [
                 {
@@ -113,6 +114,10 @@
                 {
                     "type": "file",
                     "path": "azahar-launcher.sh"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/azahar/fix-qt6.10-build.patch"
                 }
             ]
         }
