@@ -1,3 +1,4 @@
 .flatpak-builder/
 builddir/
 repo/
+.DS_Store
