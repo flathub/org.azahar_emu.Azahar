@@ -21,6 +21,7 @@
   <url type="homepage">https://azahar-emu.org/</url>
   <url type="bugtracker">https://github.com/azahar-emu/azahar/issues</url>
   <url type="contact">https://discord.com/invite/4ZjMpAp3M6</url>
+  <url type="vcs-browser">https://github.com/azahar-emu/azahar</url>
   <screenshots>
     <screenshot type="default"><caption>A screenshot of Pokemon Ultra Moon</caption><image>https://raw.githubusercontent.com/azahar-emu/branding/502e4178456f04dc16946a1338ef56d83237ac55/screenshots/pokemon-ultra-moon.png</image></screenshot>
     <screenshot><caption>A screenshot of Star Fox 64 3D</caption><image>https://raw.githubusercontent.com/azahar-emu/branding/502e4178456f04dc16946a1338ef56d83237ac55/screenshots/star-fox-64-3d.png</image></screenshot>
