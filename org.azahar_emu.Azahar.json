@@ -87,6 +87,7 @@
                 "-DCMAKE_CXX_COMPILER=clang++",
                 "-DCMAKE_LINKER=lld",
                 "-DENABLE_QT_TRANSLATION=ON",
+                "-DENABLE_OPENGL=ON",
                 "-DUSE_DISCORD_PRESENCE=ON",
                 "-DUSE_SYSTEM_SDL2=ON"
             ],
