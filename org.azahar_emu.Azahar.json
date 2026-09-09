@@ -1,15 +1,15 @@
 {
     "app-id": "org.azahar_emu.Azahar",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.9",
+    "runtime-version": "6.11",
     "sdk": "org.kde.Sdk",
     "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.llvm19"
+        "org.freedesktop.Sdk.Extension.llvm21"
     ],
     "command": "azahar-launcher",
     "build-options": {
-        "append-path": "/usr/lib/sdk/llvm19/bin",
-        "prepend-ld-library-path": "/usr/lib/sdk/llvm19/lib",
+        "append-path": "/usr/lib/sdk/llvm21/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm21/lib",
         "cflags": "-Wno-unused-command-line-argument",
         "cxxflags": "-Wno-unused-command-line-argument"
     },
