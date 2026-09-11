@@ -31,8 +31,12 @@
   </screenshots>
   <releases>
 
+    <release version="2126.1" date="2026-09-09">
+      <url>https://github.com/azahar-emu/azahar/releases/tag/2126.1</url>
+    </release>
+
     <release version="2126.0" date="2026-08-10">
-      <url>https://github.com/azahar-emu/azahar/releases/tag/2125.1.1</url>
+      <url>https://github.com/azahar-emu/azahar/releases/tag/2126.0</url>
     </release>
 
     <release version="2125.1.1" date="2026-04-21">
