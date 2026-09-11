@@ -103,8 +103,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/azahar-emu/azahar/releases/download/2126.0/azahar-unified-source-2126.0.tar.xz",
-                    "sha256": "c2764473fa465f88f3b8c90efd56b3aa0a6244919a49742eeb407fe42bd869a8"
+                    "url": "https://github.com/azahar-emu/azahar/releases/download/2126.1/azahar-unified-source-2126.1.tar.xz",
+                    "sha256": "7bea6d8aec905e10ffcf7ceaf558a231a21ce008ad40d193ff9fb247b1ccf9cb"
                 },
                 {
                     "type": "file",
